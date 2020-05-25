@@ -1,0 +1,3 @@
+/home/sinamoghimi/Downloads/CppND-System-Monitor-Project/build/CMakeFiles/rebuild_cache.dir
+/home/sinamoghimi/Downloads/CppND-System-Monitor-Project/build/CMakeFiles/edit_cache.dir
+/home/sinamoghimi/Downloads/CppND-System-Monitor-Project/build/CMakeFiles/monitor.dir
