@@ -19,16 +19,17 @@ using std::vector;
 System::System()
     : kernel_{LinuxParser::Kernel()}, os_{LinuxParser::OperatingSystem()} {}
 // TODO: Return the system's CPU
-Processor& System::Cpu() { return cpu_; }
+Processor &System::Cpu() { return cpu_; }
 
 // TODO: Return a container composed of the system's processes
 // bool Compare(Process a, Process b) {
 //   return a.CpuUtilization() < b.CpuUtilization();
 // }
 
-vector<Process>& System::Processes() {
+vector<Process> &System::Processes() {
   std::vector<int> pids{LinuxParser::Pids()};
-  for (int const& pid : pids) processes_.emplace_back(Process(pid));
+  for (int const &pid : pids)
+    processes_.emplace_back(Process(pid));
   // std::sort(processes_.begin(), processes_.end(), Compare);
   return processes_;
 }

@@ -56,9 +56,10 @@ vector<int> LinuxParser::Pids() {
   if (stream.is_open()) {
     std::vector<int> pids{};
     std::string pid{};
-    for (auto const& x : std::filesystem::directory_iterator(p)) {
+    for (auto const &x : std::filesystem::directory_iterator(p)) {
       pid = x.path().stem().string();
-      if (isdigit(pid[0])) pids.push_back(stoi(pid));
+      if (isdigit(pid[0]))
+        pids.push_back(stoi(pid));
     }
     return pids;
   }
@@ -102,7 +103,7 @@ long LinuxParser::UpTime() {
 
 // DONE: Read and return the number of jiffies for the system
 long LinuxParser::Jiffies() {
-  std::string* cpu_util = CpuUtilization().data();
+  std::string *cpu_util = CpuUtilization().data();
   long sum{};
   for (int token{kUser_}; token <= kSteal_; token++)
     sum += std::stol(cpu_util[token]);
@@ -117,7 +118,8 @@ std::vector<std::string> LinuxParser::PidStat(int pid) {
     std::vector<std::string> contents{};
     std::getline(stream, line);
     std::istringstream linestream(line);
-    while (std::getline(linestream, jiffy, ' ')) contents.emplace_back(jiffy);
+    while (std::getline(linestream, jiffy, ' '))
+      contents.emplace_back(jiffy);
     return contents;
   }
   return {};
@@ -127,7 +129,8 @@ long LinuxParser::ActiveJiffies(int pid) {
   std::vector<std::string> contents = PidStat(pid);
   if (contents.size() != 0) {
     long sum{};
-    for (int i{13}; i < 17; i++) sum += stol(contents[i]);
+    for (int i{13}; i < 17; i++)
+      sum += stol(contents[i]);
     return sum;
   }
   return 0;
@@ -138,7 +141,7 @@ long LinuxParser::ActiveJiffies() { return Jiffies() - IdleJiffies(); }
 
 // DONE: Read and return the number of idle jiffies for the system
 long LinuxParser::IdleJiffies() {
-  std::string* cpu_util = CpuUtilization().data();
+  std::string *cpu_util = CpuUtilization().data();
   long sum{};
   for (int token{kIdle_}; token <= kIOwait_; token++)
     sum += std::stol(cpu_util[token]);
@@ -169,7 +172,8 @@ int LinuxParser::TotalProcesses() {
   if (stream.is_open()) {
     std::string line{}, key{};
     int value{}, line_num{6};
-    for (int i{}; i <= line_num; i++) std::getline(stream, line);
+    for (int i{}; i <= line_num; i++)
+      std::getline(stream, line);
     std::istringstream linestream(line);
     linestream >> key >> value;
     return value;
@@ -183,7 +187,8 @@ int LinuxParser::RunningProcesses() {
   if (stream.is_open()) {
     std::string line{}, key{};
     int value{}, line_num{7};
-    for (int i{}; i <= line_num; i++) std::getline(stream, line);
+    for (int i{}; i <= line_num; i++)
+      std::getline(stream, line);
     std::istringstream linestream(line);
     linestream >> key >> value;
     return value;
@@ -212,10 +217,12 @@ string LinuxParser::Ram(int pid) {
   if (stream.is_open()) {
     std::string line{}, key{}, value{};
     int line_num{17};
-    for (int i{}; i <= line_num; i++) std::getline(stream, line);
+    for (int i{}; i <= line_num; i++)
+      std::getline(stream, line);
     std::istringstream linestream(line);
     linestream >> key >> value;
-    if (key == "VmSize:") return std::to_string(stof(value) / 1000);
+    if (key == "VmSize:")
+      return std::to_string(stof(value) / 1000);
   }
   return string();
 }
@@ -226,10 +233,12 @@ string LinuxParser::Uid(int pid) {
   if (stream.is_open()) {
     std::string line{}, key{}, value{};
     int line_num{8};
-    for (int i{}; i <= line_num; i++) std::getline(stream, line);
+    for (int i{}; i <= line_num; i++)
+      std::getline(stream, line);
     std::istringstream linestream(line);
     linestream >> key >> value;
-    if (key == "Uid:") return value;
+    if (key == "Uid:")
+      return value;
   }
   return string();
 }
@@ -244,7 +253,8 @@ string LinuxParser::User(int pid) {
       std::replace(line.begin(), line.end(), ':', ' ');
       linestream.str(line);
       linestream >> key >> x >> value;
-      if (value == uid) return key;
+      if (value == uid)
+        return key;
     }
   }
   return string();

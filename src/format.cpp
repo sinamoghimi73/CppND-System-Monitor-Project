@@ -21,16 +21,14 @@ string Format::ElapsedTime(long seconds) {
 
   bool flag = (TimeFormat[0] != 0) ? 0 : 1;
   switch (flag) {
-    case 1:
-      return std::to_string(TimeFormat[1]) + ":" +
-             std::to_string(TimeFormat[2]) + ":" +
-             std::to_string(TimeFormat[3]);
-      break;
-    default:
-      return std::to_string(TimeFormat[0]) + ":" +
-             std::to_string(TimeFormat[1]) + ":" +
-             std::to_string(TimeFormat[2]) + ":" +
-             std::to_string(TimeFormat[3]);
-      break;
+  case 1:
+    return std::to_string(TimeFormat[1]) + ":" + std::to_string(TimeFormat[2]) +
+           ":" + std::to_string(TimeFormat[3]);
+    break;
+  default:
+    return std::to_string(TimeFormat[0]) + ":" + std::to_string(TimeFormat[1]) +
+           ":" + std::to_string(TimeFormat[2]) + ":" +
+           std::to_string(TimeFormat[3]);
+    break;
   }
 }
