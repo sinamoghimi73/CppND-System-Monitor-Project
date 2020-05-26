@@ -36,7 +36,9 @@ This project uses [Make](https://www.gnu.org/software/make/). The Makefile has f
 3. Run the resulting executable: `./build/monitor`
 
 
-![Starting System Monitor](images/starting_monitor.png)
+<p align="center">
+<img src="images/starting_monitor.png" width="600" height="450" />
+</p>
 
 
 4. Follow along with the lesson.
