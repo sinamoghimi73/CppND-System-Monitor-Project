@@ -2,14 +2,15 @@
 #define PROCESSOR_H
 
 class Processor {
-public:
+ public:
   Processor();
-  float Utilization(); // TODO: See src/processor.cpp
+  float Utilization();  // TODO: See src/processor.cpp
 
   // TODO: Declare any necessary private members
-private:
-  long jiffies_old_{}, jiffies_new_{}, active_jiffy_old_{}, active_jiffy_new_{};
-  bool jiffies_delta{};
+ private:
+  long jiffies_old_{}, jiffies_new_{}, idle_jiffy_old_{}, idle_jiffy_new_{},
+      totald{}, idled{};
+  bool total_delta{};
 };
 
 #endif
