@@ -5,7 +5,7 @@ Starter code for System Monitor Project in the Object Oriented Programming Cours
 Follow along with the classroom lesson to complete the project!
 
 <p align="center">
-![System Monitor](images/monitor.png)
+<img src="images/monitor.png" width="600" height="450" />
 </p>
 
 ## Udacity Linux Workspace
