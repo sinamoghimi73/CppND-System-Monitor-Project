@@ -35,12 +35,12 @@ string Format::ElapsedTime(long seconds) {
 
   bool flag = (std::stol(TimeFormat[0]) != 0) ? 0 : 1;
   switch (flag) {
-    case 1:
-      return TimeFormat[1] + ":" + TimeFormat[2] + ":" + TimeFormat[3];
-      break;
-    default:
-      return TimeFormat[0] + ":" + TimeFormat[1] + ":" + TimeFormat[2] + ":" +
-             TimeFormat[3];
-      break;
+  case 1:
+    return TimeFormat[1] + ":" + TimeFormat[2] + ":" + TimeFormat[3];
+    break;
+  default:
+    return TimeFormat[0] + ":" + TimeFormat[1] + ":" + TimeFormat[2] + ":" +
+           TimeFormat[3];
+    break;
   }
 }

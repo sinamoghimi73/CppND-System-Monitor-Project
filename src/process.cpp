@@ -17,9 +17,8 @@ using std::vector;
 
 // DONE: Return this process's ID
 Process::Process(int pid)
-    : pid_{pid},
-      user_{LinuxParser::User(pid)},
-      command_{LinuxParser::Command(pid)} {}
+    : pid_{pid}, user_{LinuxParser::User(pid)}, command_{LinuxParser::Command(
+                                                    pid)} {}
 int Process::Pid() { return pid_; }
 
 // DONE: Return this process's CPU utilization
@@ -42,7 +41,7 @@ long int Process::UpTime() { return LinuxParser::UpTime(pid_); }
 
 // DONE: Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
-bool Process::operator<(Process const& a) const {
+bool Process::operator<(Process const &a) const {
   return (std::stoi(LinuxParser::Ram(pid_)) >
           std::stoi(LinuxParser::Ram(a.pid_)))
              ? true

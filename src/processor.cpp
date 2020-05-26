@@ -29,11 +29,11 @@ float Processor::Utilization() {
 
   total_delta = (jiffies_new_ - jiffies_old_) != 0;
   switch (total_delta) {
-    case 0:
-      return 0.0;
-      break;
-    default:
-      return static_cast<float>(totald - idled) / totald;
-      break;
+  case 0:
+    return 0.0;
+    break;
+  default:
+    return static_cast<float>(totald - idled) / totald;
+    break;
   }
 }
