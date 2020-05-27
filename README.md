@@ -4,7 +4,9 @@ Starter code for System Monitor Project in the Object Oriented Programming Cours
 
 Follow along with the classroom lesson to complete the project!
 
-![System Monitor](images/monitor.png)
+<p align="center">
+<img src="images/monitor.png" width="600" height="450" />
+</p>
 
 ## Udacity Linux Workspace
 [Udacity](https://www.udacity.com/) provides a browser-based Linux [Workspace](https://engineering.udacity.com/creating-a-gpu-enhanced-virtual-desktop-for-udacity-497bdd91a505) for students. 
@@ -32,7 +34,12 @@ This project uses [Make](https://www.gnu.org/software/make/). The Makefile has f
 2. Build the project: `make build`
 
 3. Run the resulting executable: `./build/monitor`
-![Starting System Monitor](images/starting_monitor.png)
+
+
+<p align="center">
+<img src="images/starting_monitor.png" width="600" height="450" />
+</p>
+
 
 4. Follow along with the lesson.
 
