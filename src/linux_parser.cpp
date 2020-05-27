@@ -203,7 +203,7 @@ string LinuxParser::Command(int pid) {
   std::ifstream stream(kProcDirectory + std::to_string(pid) + kCmdlineFilename);
   if (stream.is_open()) {
     std::string line{};
-    int limit{30};
+    int limit{22};
     std::getline(stream, line);
     if (line.empty())
       return "None";
@@ -212,7 +212,7 @@ string LinuxParser::Command(int pid) {
     else {
       line.resize(limit);
       line.shrink_to_fit();
-      return line + "...";
+      return line + "..";
     }
   }
   return string();
@@ -259,17 +259,25 @@ string LinuxParser::User(int pid) {
   if (stream.is_open()) {
     std::string line{}, key{}, x{}, value{}, uid{Uid(pid)};
     std::istringstream linestream{};
+    int limit{8};
     while (std::getline(stream, line)) {
       std::replace(line.begin(), line.end(), ':', ' ');
       linestream.str(line);
       linestream >> key >> x >> value;
-      if (value == uid)
-        return key;
+
+      if (value == uid) {
+        if (static_cast<int>(key.length()) <= limit)
+          return key;
+        else {
+          key.resize(limit);
+          key.shrink_to_fit();
+          return key + "..";
+        }
+      }
     }
   }
   return string();
 }
-
 // DONE: Read and return the uptime of a process
 long LinuxParser::UpTime(int pid) {
   std::vector<std::string> contents = PidStat(pid);
