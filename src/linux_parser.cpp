@@ -53,13 +53,13 @@ string LinuxParser::Kernel() {
 
 // DONE: Update this to use std::filesystem
 vector<int> LinuxParser::Pids() {
-  std::filesystem::path p(kProcDirectory);
-  std::ifstream stream(p);
+  std::filesystem::path path(kProcDirectory);
+  std::ifstream stream(path);
   if (stream.is_open()) {
     std::vector<int> pids{};
     std::string pid{};
-    for (auto const &x : std::filesystem::directory_iterator(p)) {
-      pid = x.path().stem().string();
+    for (auto const &files : std::filesystem::directory_iterator(path)) {
+      pid = files.path().stem().string();
       if (isdigit(pid[0]))
         pids.push_back(stoi(pid));
     }

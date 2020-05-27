@@ -33,7 +33,7 @@ string Format::ElapsedTime(long seconds) {
   num << std::dec << std::setw(2) << std::setfill('0') << seconds;
   TimeFormat[3] = num.str();
 
-  bool flag = (std::stol(TimeFormat[0]) != 0) ? 0 : 1;
+  bool const flag = (std::stol(TimeFormat[0]) != 0) ? 0 : 1;
   switch (flag) {
   case 1:
     return TimeFormat[1] + ":" + TimeFormat[2] + ":" + TimeFormat[3];
