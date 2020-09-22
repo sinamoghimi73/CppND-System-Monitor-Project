@@ -39,10 +39,3 @@ This project uses [Make](https://www.gnu.org/software/make/). The Makefile has f
 <p align="center">
 <img src="images/starting_monitor.png" width="600" height="450" />
 </p>
-
-
-4. Follow along with the lesson.
-
-5. Implement the `System`, `Process`, and `Processor` classes, as well as functions within the `LinuxParser` namespace.
-
-6. Submit!
